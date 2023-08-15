@@ -1,0 +1,15 @@
+.gitignore
+.npmignore
+.openapi-generator-ignore
+README.md
+package.json
+src/apis/EmailDomainNameApi.ts
+src/apis/FamilyNameApi.ts
+src/apis/GivenNameApi.ts
+src/apis/index.ts
+src/index.ts
+src/models/BadRequestResponseDto.ts
+src/models/NameResponseDto.ts
+src/models/index.ts
+src/runtime.ts
+tsconfig.json
