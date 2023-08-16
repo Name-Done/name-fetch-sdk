@@ -6,6 +6,7 @@ package.json
 src/apis/EmailDomainNameApi.ts
 src/apis/FamilyNameApi.ts
 src/apis/GivenNameApi.ts
+src/apis/TopLevelDomainNameApi.ts
 src/apis/index.ts
 src/index.ts
 src/models/BadRequestResponseDto.ts

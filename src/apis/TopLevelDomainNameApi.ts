@@ -25,21 +25,21 @@ import {
     NameResponseDtoToJSON,
 } from '../models';
 
-export interface GetEmailDomainNamesRequest {
+export interface GetTopLevelDomainNamesRequest {
     name: string;
 }
 
 /**
  * 
  */
-export class EmailDomainNameApi extends runtime.BaseAPI {
+export class TopLevelDomainNameApi extends runtime.BaseAPI {
 
     /**
-     * Get a list of email domain names
+     * Get a list of top level domain names
      */
-    async getEmailDomainNamesRaw(requestParameters: GetEmailDomainNamesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NameResponseDto>> {
+    async getTopLevelDomainNamesRaw(requestParameters: GetTopLevelDomainNamesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NameResponseDto>> {
         if (requestParameters.name === null || requestParameters.name === undefined) {
-            throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling getEmailDomainNames.');
+            throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling getTopLevelDomainNames.');
         }
 
         const queryParameters: any = {};
@@ -51,7 +51,7 @@ export class EmailDomainNameApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/name/email-domain`,
+            path: `/name/top-level-domain`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -61,10 +61,10 @@ export class EmailDomainNameApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get a list of email domain names
+     * Get a list of top level domain names
      */
-    async getEmailDomainNames(requestParameters: GetEmailDomainNamesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameResponseDto> {
-        const response = await this.getEmailDomainNamesRaw(requestParameters, initOverrides);
+    async getTopLevelDomainNames(requestParameters: GetTopLevelDomainNamesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameResponseDto> {
+        const response = await this.getTopLevelDomainNamesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
