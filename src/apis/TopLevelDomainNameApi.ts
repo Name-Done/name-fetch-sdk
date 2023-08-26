@@ -17,13 +17,13 @@ import * as runtime from '../runtime';
 import type {
   BadRequestResponseDto,
   NameResponseDto,
-} from '../models';
+} from '../models/index';
 import {
     BadRequestResponseDtoFromJSON,
     BadRequestResponseDtoToJSON,
     NameResponseDtoFromJSON,
     NameResponseDtoToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface GetTopLevelDomainNamesRequest {
     name: string;
