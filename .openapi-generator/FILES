@@ -3,8 +3,10 @@
 .openapi-generator-ignore
 README.md
 package.json
+src/apis/DomainNameApi.ts
 src/apis/EmailDomainNameApi.ts
 src/apis/FamilyNameApi.ts
+src/apis/GenderApi.ts
 src/apis/GivenNameApi.ts
 src/apis/TopLevelDomainNameApi.ts
 src/apis/index.ts

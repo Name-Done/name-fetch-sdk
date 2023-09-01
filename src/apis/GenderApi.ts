@@ -25,21 +25,21 @@ import {
     NameResponseDtoToJSON,
 } from '../models/index';
 
-export interface GetEmailDomainNamesRequest {
+export interface GetGendersRequest {
     name: string;
 }
 
 /**
  * 
  */
-export class EmailDomainNameApi extends runtime.BaseAPI {
+export class GenderApi extends runtime.BaseAPI {
 
     /**
-     * Get a list of email domain names
+     * Get a list of genders
      */
-    async getEmailDomainNamesRaw(requestParameters: GetEmailDomainNamesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NameResponseDto>> {
+    async getGendersRaw(requestParameters: GetGendersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NameResponseDto>> {
         if (requestParameters.name === null || requestParameters.name === undefined) {
-            throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling getEmailDomainNames.');
+            throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling getGenders.');
         }
 
         const queryParameters: any = {};
@@ -51,7 +51,7 @@ export class EmailDomainNameApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/name/email-domain`,
+            path: `/name/gender`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -61,10 +61,10 @@ export class EmailDomainNameApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get a list of email domain names
+     * Get a list of genders
      */
-    async getEmailDomainNames(requestParameters: GetEmailDomainNamesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameResponseDto> {
-        const response = await this.getEmailDomainNamesRaw(requestParameters, initOverrides);
+    async getGenders(requestParameters: GetGendersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameResponseDto> {
+        const response = await this.getGendersRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
