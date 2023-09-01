@@ -26,7 +26,7 @@ import {
 } from '../models/index';
 
 export interface GetGendersRequest {
-    name: string;
+    name?: string;
 }
 
 /**
@@ -38,10 +38,6 @@ export class GenderApi extends runtime.BaseAPI {
      * Get a list of genders
      */
     async getGendersRaw(requestParameters: GetGendersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NameResponseDto>> {
-        if (requestParameters.name === null || requestParameters.name === undefined) {
-            throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling getGenders.');
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters.name !== undefined) {
@@ -63,7 +59,7 @@ export class GenderApi extends runtime.BaseAPI {
     /**
      * Get a list of genders
      */
-    async getGenders(requestParameters: GetGendersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameResponseDto> {
+    async getGenders(requestParameters: GetGendersRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameResponseDto> {
         const response = await this.getGendersRaw(requestParameters, initOverrides);
         return await response.value();
     }

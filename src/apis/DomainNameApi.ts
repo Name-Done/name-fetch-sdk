@@ -26,7 +26,7 @@ import {
 } from '../models/index';
 
 export interface GetDomainNamesRequest {
-    name: string;
+    name?: string;
 }
 
 /**
@@ -38,10 +38,6 @@ export class DomainNameApi extends runtime.BaseAPI {
      * Get a list of domain names
      */
     async getDomainNamesRaw(requestParameters: GetDomainNamesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NameResponseDto>> {
-        if (requestParameters.name === null || requestParameters.name === undefined) {
-            throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling getDomainNames.');
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters.name !== undefined) {
@@ -63,7 +59,7 @@ export class DomainNameApi extends runtime.BaseAPI {
     /**
      * Get a list of domain names
      */
-    async getDomainNames(requestParameters: GetDomainNamesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameResponseDto> {
+    async getDomainNames(requestParameters: GetDomainNamesRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameResponseDto> {
         const response = await this.getDomainNamesRaw(requestParameters, initOverrides);
         return await response.value();
     }

@@ -26,8 +26,8 @@ import {
 } from '../models/index';
 
 export interface GetGivenNamesRequest {
-    name: string;
-    gender?: GetGivenNamesGenderEnum;
+    name?: string;
+    gender?: string;
 }
 
 /**
@@ -39,10 +39,6 @@ export class GivenNameApi extends runtime.BaseAPI {
      * Get a list of given names
      */
     async getGivenNamesRaw(requestParameters: GetGivenNamesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NameResponseDto>> {
-        if (requestParameters.name === null || requestParameters.name === undefined) {
-            throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling getGivenNames.');
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters.name !== undefined) {
@@ -68,18 +64,9 @@ export class GivenNameApi extends runtime.BaseAPI {
     /**
      * Get a list of given names
      */
-    async getGivenNames(requestParameters: GetGivenNamesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameResponseDto> {
+    async getGivenNames(requestParameters: GetGivenNamesRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameResponseDto> {
         const response = await this.getGivenNamesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
 }
-
-/**
- * @export
- */
-export const GetGivenNamesGenderEnum = {
-    Male: 'male',
-    Female: 'female'
-} as const;
-export type GetGivenNamesGenderEnum = typeof GetGivenNamesGenderEnum[keyof typeof GetGivenNamesGenderEnum];

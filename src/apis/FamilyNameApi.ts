@@ -26,7 +26,7 @@ import {
 } from '../models/index';
 
 export interface GetFamilyNamesRequest {
-    name: string;
+    name?: string;
 }
 
 /**
@@ -38,10 +38,6 @@ export class FamilyNameApi extends runtime.BaseAPI {
      * Get a list of family names
      */
     async getFamilyNamesRaw(requestParameters: GetFamilyNamesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NameResponseDto>> {
-        if (requestParameters.name === null || requestParameters.name === undefined) {
-            throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling getFamilyNames.');
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters.name !== undefined) {
@@ -63,7 +59,7 @@ export class FamilyNameApi extends runtime.BaseAPI {
     /**
      * Get a list of family names
      */
-    async getFamilyNames(requestParameters: GetFamilyNamesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameResponseDto> {
+    async getFamilyNames(requestParameters: GetFamilyNamesRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameResponseDto> {
         const response = await this.getFamilyNamesRaw(requestParameters, initOverrides);
         return await response.value();
     }
