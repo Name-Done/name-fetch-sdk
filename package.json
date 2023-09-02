@@ -1,6 +1,6 @@
 {
   "name": "@name-done/name-fetch-sdk",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "OpenAPI client for @name-done/name-fetch-sdk",
   "author": "OpenAPI-Generator",
   "repository": {

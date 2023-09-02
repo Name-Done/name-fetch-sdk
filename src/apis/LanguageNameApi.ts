@@ -25,19 +25,19 @@ import {
     NameResponseDtoToJSON,
 } from '../models/index';
 
-export interface GetDomainNamesRequest {
+export interface GetLanguageNamesRequest {
     name?: string;
 }
 
 /**
  * 
  */
-export class DomainNameApi extends runtime.BaseAPI {
+export class LanguageNameApi extends runtime.BaseAPI {
 
     /**
-     * Get a list of domain names
+     * Get a list of language names
      */
-    async getDomainNamesRaw(requestParameters: GetDomainNamesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NameResponseDto>> {
+    async getLanguageNamesRaw(requestParameters: GetLanguageNamesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<NameResponseDto>> {
         const queryParameters: any = {};
 
         if (requestParameters.name !== undefined) {
@@ -47,7 +47,7 @@ export class DomainNameApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/name/domain`,
+            path: `/name/language`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -57,10 +57,10 @@ export class DomainNameApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get a list of domain names
+     * Get a list of language names
      */
-    async getDomainNames(requestParameters: GetDomainNamesRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameResponseDto> {
-        const response = await this.getDomainNamesRaw(requestParameters, initOverrides);
+    async getLanguageNames(requestParameters: GetLanguageNamesRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<NameResponseDto> {
+        const response = await this.getLanguageNamesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
